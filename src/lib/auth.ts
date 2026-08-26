@@ -14,6 +14,7 @@ export const auth = betterAuth({
   trustedOrigins: [
     "https://bridgepointapp.co.za",
     "https://www.bridgepointapp.co.za",
+    "https://*.vercel.app",   // covers every Vercel preview/deployment URL, which changes on every push
     "http://localhost:3000"
   ],
 
