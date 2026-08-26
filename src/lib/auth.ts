@@ -6,6 +6,17 @@ import { db } from "@/db";
 export const auth = betterAuth({
   database: drizzleAdapter(db, { provider: "pg" }),
 
+  // Explicit allow-list of origins that are permitted to sign in / use the
+  // session. Without this, Better Auth's CSRF protection can reject requests
+  // even from your own domain if it doesn't exactly match its inferred base
+  // URL (e.g. a www vs. non-www mismatch, or testing on the .vercel.app URL
+  // alongside a custom domain).
+  trustedOrigins: [
+    "https://bridgepointapp.co.za",
+    "https://www.bridgepointapp.co.za",
+    "http://localhost:3000"
+  ],
+
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: false, // internal tool, single org - admins create accounts directly
