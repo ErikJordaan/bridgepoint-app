@@ -100,10 +100,17 @@ export default function FieldsClient({ fields }: { fields: IFieldDefinition[] })
                   <button type="submit" className="primary">Save</button>
                   <button type="button" className="secondary" onClick={() => setEditing(null)}>Cancel</button>
                 </div>
-                <form action={async (fd) => { await deleteField(fd); setEditing(null); }}>
-                  <input type="hidden" name="id" value={editing.id} />
-                  <button type="submit" className="danger" onClick={(e) => { if (!confirm(`Delete "${editing.label}"? Any values already stored in this field will no longer be shown.`)) e.preventDefault(); }}>Delete</button>
-                </form>
+                <button
+                  type="button"
+                  className="danger"
+                  onClick={async () => {
+                    if (!confirm(`Delete "${editing.label}"? Any values already stored in this field will no longer be shown.`)) return;
+                    await deleteField(editing.id);
+                    setEditing(null);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </form>
           </div>

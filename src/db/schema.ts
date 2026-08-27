@@ -1,4 +1,4 @@
-import { pgTable, text, integer, boolean, timestamp, jsonb, numeric, primaryKey } from "drizzle-orm/pg-core";
+import { pgTable, text, integer, boolean, timestamp, jsonb, numeric, primaryKey, unique } from "drizzle-orm/pg-core";
 
 // ============================================================
 // Auth tables (user/session/account/verification) are NOT
@@ -49,13 +49,15 @@ export const fieldDefinitions = pgTable("field_definitions", {
   required: boolean("required").default(false).notNull(),
   sortOrder: integer("sort_order").default(0).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull()
-});
+}, (t) => ({
+  uniqueKeyPerEntity: unique().on(t.entityType, t.key)
+}));
 
 // ---------- Deal Stages ----------
 
 export const dealStages = pgTable("deal_stages", {
   id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
-  name: text("name").notNull(),
+  name: text("name").notNull().unique(),
   probability: integer("probability").notNull(),
   sortOrder: integer("sort_order").notNull(),
   isClosedWon: boolean("is_closed_won").default(false).notNull(),

@@ -57,9 +57,8 @@ export async function updateField(formData: FormData) {
   revalidatePath("/admin/fields");
 }
 
-export async function deleteField(formData: FormData) {
+export async function deleteField(id: number) {
   await requirePermission("admin.manage_fields");
-  const id = parseInt(formData.get("id") as string, 10);
   await db.delete(fieldDefinitions).where(eq(fieldDefinitions.id, id));
   revalidatePath("/admin/fields");
 }

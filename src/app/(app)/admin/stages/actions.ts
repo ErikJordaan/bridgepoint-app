@@ -38,9 +38,8 @@ export async function updateStage(formData: FormData) {
   revalidatePath("/admin/stages");
 }
 
-export async function deleteStage(formData: FormData) {
+export async function deleteStage(id: number) {
   await requirePermission("admin.manage_stages");
-  const id = parseInt(formData.get("id") as string, 10);
   await db.delete(dealStages).where(eq(dealStages.id, id));
   revalidatePath("/admin/stages");
 }

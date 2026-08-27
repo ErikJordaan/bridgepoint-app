@@ -1,0 +1,2 @@
+ALTER TABLE "deal_stages" ADD CONSTRAINT "deal_stages_name_unique" UNIQUE("name");--> statement-breakpoint
+ALTER TABLE "field_definitions" ADD CONSTRAINT "field_definitions_entity_type_key_unique" UNIQUE("entity_type","key");

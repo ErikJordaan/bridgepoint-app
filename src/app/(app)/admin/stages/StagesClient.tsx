@@ -82,10 +82,17 @@ export default function StagesClient({ stages }: { stages: IDealStage[] }) {
                   <button type="submit" className="primary">Save</button>
                   <button type="button" className="secondary" onClick={() => setEditing(null)}>Cancel</button>
                 </div>
-                <form action={async (fd) => { await deleteStage(fd); setEditing(null); }}>
-                  <input type="hidden" name="id" value={editing.id} />
-                  <button type="submit" className="danger" onClick={(e) => { if (!confirm(`Delete "${editing.name}"? This can't be undone.`)) e.preventDefault(); }}>Delete</button>
-                </form>
+                <button
+                  type="button"
+                  className="danger"
+                  onClick={async () => {
+                    if (!confirm(`Delete "${editing.name}"? This can't be undone.`)) return;
+                    await deleteStage(editing.id);
+                    setEditing(null);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </form>
           </div>
