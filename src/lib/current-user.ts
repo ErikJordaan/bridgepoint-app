@@ -19,6 +19,15 @@ export async function getCurrentUser(): Promise<ICurrentUser | null> {
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session?.user) return null;
 
+  const isActive = (session.user as any).active !== false;
+  if (!isActive) {
+    // Deactivated account with a still-valid session token - kill the
+    // session server-side rather than just hiding the UI, so a deactivated
+    // user can't keep using an already-open tab.
+    await auth.api.signOut({ headers: await headers() }).catch(() => {});
+    return null;
+  }
+
   const roleName = (session.user as any).role as string;
 
   const role = await db.query.roles.findFirst({ where: eq(roles.name, roleName) });
