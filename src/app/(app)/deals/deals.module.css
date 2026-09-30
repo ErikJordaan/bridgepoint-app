@@ -1,0 +1,267 @@
+.page {
+  --bp-blue: #25408f;
+  --bp-red: #c9252c;
+  --bp-light-blue: #00aeef;
+  --bp-grey: #dcddde;
+}
+
+.topBar {
+  margin-bottom: 16px;
+}
+
+.hint {
+  margin-left: 8px;
+  font-size: 13px;
+  color: #777;
+}
+
+.errorBanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fdecea;
+  color: var(--bp-red);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.savedBanner {
+  background: #e7f5ea;
+  color: #1e7c34;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.dismissBtn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Buttons */
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--bp-blue);
+  background: var(--bp-blue);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btnSecondary {
+  background: #fff;
+  color: var(--bp-blue);
+}
+
+.btnDanger {
+  background: var(--bp-red);
+  border-color: var(--bp-red);
+}
+
+.btnFull {
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* Kanban board */
+
+.board {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.column {
+  background: #eceef1;
+  border-radius: 8px;
+  width: 270px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 220px);
+}
+
+.columnHeader {
+  padding: 12px 14px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #1c1c1e;
+  border-bottom: 2px solid var(--bp-light-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.columnCount {
+  font-weight: 400;
+  font-size: 12px;
+  color: #666;
+}
+
+.columnBody {
+  padding: 8px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 60px;
+}
+
+.columnBodyOver {
+  background: #dbe6fb;
+}
+
+.columnFooter {
+  padding: 8px 14px;
+  font-size: 12px;
+  color: #555;
+  border-top: 1px solid #d7d9dc;
+}
+
+.card {
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  cursor: grab;
+  font-size: 13px;
+  color: #1c1c1e;
+}
+
+.card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.cardTitle {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cardValue {
+  color: var(--bp-blue);
+  font-weight: 600;
+}
+
+.cardMeta {
+  color: #777;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Modal */
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  width: 480px;
+  max-width: 92vw;
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+  color: #1c1c1e;
+}
+
+.modalWide {
+  width: 560px;
+}
+
+.modalClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  color: #888;
+  cursor: pointer;
+}
+
+.modalClose:hover {
+  color: #000;
+}
+
+.modalTitle {
+  margin-top: 0;
+  margin-bottom: 4px;
+  color: var(--bp-blue);
+}
+
+.modalSubtitle {
+  color: #666;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.nextActionNote {
+  margin-top: 4px;
+}
+
+.divider {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid var(--bp-grey);
+}
+
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+/* Form fields */
+
+.field {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 8px;
+  border: 1px solid var(--bp-grey);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+}
