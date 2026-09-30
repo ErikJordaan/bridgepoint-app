@@ -10,7 +10,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     { href: "/dashboard", label: "Dashboard", show: true },
     { href: "/deals", label: "Deals", show: hasPermission(user, "opportunities.view_own") || hasPermission(user, "opportunities.view_all") },
     { href: "/companies", label: "Companies & Contacts", show: hasPermission(user, "companies.view") },
-    { href: "/reports", label: "Reports", show: hasPermission(user, "reports.view_all") },
+    { href: "/reports", label: "Reports", show: hasPermission(user, "reports.view_own") || hasPermission(user, "reports.view_all") },
     { href: "/admin", label: "Admin", show: hasPermission(user, "admin.manage_users") || hasPermission(user, "admin.manage_roles") || hasPermission(user, "admin.manage_fields") || hasPermission(user, "admin.manage_stages") }
   ];
 
